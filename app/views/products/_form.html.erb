@@ -1,0 +1,24 @@
+<%= form_with(model: [@cart, product]) do |form| %>
+  <% if product.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+
+    <p>
+      <%= form.label :name, "Name" %>
+      <%= form.text_field :name %>
+      <%= form.label :price, "Price" %>
+      <%= form.text_field :price %>
+    </p>
+  </div>
+<% end %>
